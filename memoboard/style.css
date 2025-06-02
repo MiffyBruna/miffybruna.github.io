@@ -1,0 +1,237 @@
+:root {
+  --yellow: #f9e784;
+  --pink: #ffd1dc;
+  --blue: #b8e2f2;
+  --green: #c8facc;
+  --peach: #ffe1a8;
+  --lilac: #dab6f4;
+  --mint: #c4f4ee;
+
+  --bg: #fdfcfb;
+  --text: #111;
+  --board: #ffffff;
+
+  --font: 'Segoe UI', sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: background 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+}
+
+body.dark {
+  --bg: #1c1c1c;
+  --text: #f9f9f9;
+  --board: #2e2e2e;
+}
+
+.background-anim {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: radial-gradient(circle at 20% 20%, rgba(255, 215, 215, 0.3), transparent 50%),
+              radial-gradient(circle at 80% 80%, rgba(200, 255, 245, 0.3), transparent 50%),
+              radial-gradient(circle at 50% 50%, rgba(210, 210, 255, 0.15), transparent 40%);
+  background-size: 200% 200%;
+  animation: float-bg 8s ease-in-out infinite alternate;
+}
+
+@keyframes float-bg {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+main {
+  width: 100%;
+  max-width: 800px;
+  background: var(--board);
+  border: 3px solid #ddd;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  margin-top: 3rem;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+h1 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  cursor: text;
+  animation: floatTitle 2s ease-in-out infinite alternate;
+  background: linear-gradient(90deg, #ffbaba, #ffd6e0, #e0f7fa, #d8fdd8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+}
+
+@keyframes floatTitle {
+  from { transform: translateY(0); }
+  to { transform: translateY(6px); }
+}
+
+#toggle-dark {
+  display: block;
+  margin: 0 auto 1.5rem;
+  padding: 0.5rem 1.2rem;
+  background: #333;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+#note-form {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+#note-input {
+  flex: 1;
+  padding: 0.8rem;
+  font-size: 1rem;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+}
+
+button[type="submit"] {
+  padding: 0.8rem 1.2rem;
+  font-size: 1rem;
+  border: none;
+  background: #2f80ed;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background: #1c60c4;
+}
+
+#notes-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.note {
+  width: 160px;
+  height: 160px;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.08);
+  font-size: 1rem;
+  position: relative;
+  transform: rotate(-1deg);
+  animation: popIn 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow-wrap: break-word;
+  user-select: none;
+  color: #222;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.4);
+}
+
+body.dark .note {
+  color: #f9f9f9;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.note div:first-child {
+  font-weight: 600;
+}
+
+.note .note-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.note button {
+  background: transparent;
+  border: none;
+  font-weight: bold;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #333;
+}
+
+.note .liked {
+  color: red;
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) rotate(-2deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(-1deg);
+  }
+}
+
+footer {
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  opacity: 0.6;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  main {
+    padding: 1rem;
+  }
+
+  .note {
+    width: 100%;
+    height: auto;
+  }
+
+  #note-form {
+    flex-direction: column;
+  }
+
+  button[type="submit"] {
+    width: 100%;
+  }
+}
+#toggle-dark {
+  display: block;
+  margin: 0 auto 1.5rem;
+  padding: 0.5rem 1.2rem;
+  background: #333;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+body.dark #toggle-dark {
+  background: white;
+  color: black;
+  border: 1px solid #444;
+}
+
+#toggle-dark:hover {
+  transform: scale(1.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}

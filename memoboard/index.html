@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MemoBoard</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="background-anim"></div>
+
+  <main>
+    <h1 contenteditable="true" id="board-title">My Memo Board</h1>
+    <button id="toggle-dark">Toggle Dark Mode</button>
+
+    <form id="note-form">
+      <input type="text" id="note-input" placeholder="Write a note..." required/>
+      <button type="submit">Add Note</button>
+    </form>
+    <section id="notes-container"></section>
+  </main>
+
+  <footer>
+    Built with ❤️ using HTML, CSS & JavaScript.
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
