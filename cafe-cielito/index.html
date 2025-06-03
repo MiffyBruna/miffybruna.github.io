@@ -24,7 +24,7 @@
 
   <section id="hero">
     <img src="assets/images/hero.avif" alt="Café Hero" class="hero-img" />
-    <h2 class="headline">Un rincóncito del cielo con sabor mexicano ✨</h2>
+    <h2 class="headline">Un rincón del cielo con sabor mexicano ✨</h2>
     <p class="subhead">Pan dulce, cafecito y color pastel para el alma.</p>
   </section>
 
@@ -44,21 +44,28 @@
         <p>Agua de Jamaica</p>
       </div>
     </div>
+    <section id="gallerytop"><div></div></section>
   </section>
-<section id="gallerytop"><div></div></section>
-<section id="gallery"> 
+<section id="gallery">
+  <h2 class="section-title">Gallery</h2>
   <div class="marquee-wrapper">
-    <div class="small-div"><h2 class="section-title">Gallery</h2></div></section>
     <div class="marquee-track">
       <img src="assets/images/gallery1.jpg" alt="Gallery 1">
       <img src="assets/images/gallery2.jpg" alt="Gallery 2">
       <img src="assets/images/gallery3.jpg" alt="Gallery 3">
-      <!-- Duplicated -->
+      <!-- Duplicate images -->
       <img src="assets/images/gallery1.jpg" alt="Gallery 1 copy">
       <img src="assets/images/gallery2.jpg" alt="Gallery 2 copy">
       <img src="assets/images/gallery3.jpg" alt="Gallery 3 copy">
     </div>
-    </section>
+  </div>
+</section>
+
+
+
+
+
+
  
 
 
@@ -83,6 +90,31 @@
     <p>© 2025 Café Cielito ☕</p>
   </footer>
 
-  <script src="script.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const marqueeTrack = document.querySelector(".marquee-track");
+  
+  // Duplicate the content to create infinite effect
+  marqueeTrack.innerHTML += marqueeTrack.innerHTML;
+
+  let marqueeWidth = marqueeTrack.offsetWidth / 2;
+  let currentX = 0;
+
+  function animateMarquee() {
+    currentX -= 1; // Speed: change this to speed up or slow down
+
+    if (Math.abs(currentX) >= marqueeWidth) {
+      currentX = 0; // reset seamlessly
+    }
+
+    marqueeTrack.style.transform = `translateX(${currentX}px)`;
+    requestAnimationFrame(animateMarquee);
+  }
+
+  animateMarquee();
+});
+</script>
+
+
 </body>
 </html>
