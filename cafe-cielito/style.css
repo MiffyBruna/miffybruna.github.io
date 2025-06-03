@@ -1,0 +1,255 @@
+:root {
+  --porcelain-white: #fcfcfc;
+  --azul-talavera: hsl(217, 100%, 61%);
+  --charcoal: #465362;
+  --maiz-yellow: #ffcb47;
+  --cafe-brown: #3e2c24;
+  --shadow: #A89B9D;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Quicksand', sans-serif;
+  background: var(--porcelain-white);
+  color: var(--cafe-brown);
+  scroll-behavior: smooth;
+  line-height: 1.7;
+}
+
+/* Typography */
+h1, h2 {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 600;
+  color: var(--azul-talavera);
+}
+.small-div{
+    margin-top: 30px;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: var(--azul-talavera);
+}
+
+.headline {
+  font-size: 2.2rem;
+  color: var(--azul-talavera);
+  margin-top: 2rem;
+}
+
+.subhead {
+  font-size: 1.3rem;
+  color: var(--clay-red);
+  margin-bottom: 2rem;
+}
+
+/* Header */
+header {
+  background: var(--maiz-yellow);
+  padding: 1.2rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  box-shadow: 0 2px 8px var(--shadow);
+  text-align: center;
+}
+
+header h1 {
+  font-size: 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.logo-title img {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+}
+
+nav a {
+  margin: 0 1rem;
+  text-decoration: none;
+  color: var(--porcelain-white);
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: var(--clay-red);
+}
+
+/* Hero */
+#hero {
+  background: var(--porcelain-white);
+  text-align: center;
+  padding: 5rem 1.5rem;
+}
+
+.hero-img {
+  width: 100%;
+  max-width: 1000px;
+  height: auto;
+  border-radius: 1rem;
+  box-shadow: 0 4px 15px var(--shadow);
+  transition: transform 0.3s ease;
+}
+
+.hero-img:hover {
+  transform: scale(1.01);
+}
+
+/* Menu */
+#menu {
+  background: #f5f8ff;
+  padding: 5rem 1.5rem;
+}
+
+.menu-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.menu-item {
+  width: 180px;
+  text-align: center;
+}
+
+.menu-item img {
+  width: 100%;
+  border-radius: 0.8rem;
+  box-shadow: 0 4px 10px var(--shadow);
+  transition: transform 0.3s ease;
+}
+
+.menu-item img:hover {
+  transform: scale(1.05);
+}
+
+.menu-item p {
+  color: var(--clay-red);
+  font-weight: 500;
+  margin-top: 0.5rem;
+}
+
+/* Gallery Marquee */
+#gallery {
+  padding: 4rem 1.5rem;
+  background: #e6f7f9;
+  scroll-margin-top: 100px;
+  min-height: 300px; /* 👈 ensures the section has scrollable space */
+  position: relative;
+  overflow: hidden;
+}
+
+.marquee-wrapper {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+.marquee-track {
+  display: flex;
+  animation: scrollGallery 30s linear infinite;
+  gap: 2rem;
+  margin-bottom: 200px;
+}
+
+.marquee-track img {
+  width: 220px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 0.8rem;
+  box-shadow: 0 4px 10px var(--shadow);
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.marquee-track img:hover {
+  transform: scale(1.05);
+}
+
+@keyframes scrollGallery {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+
+/* About */
+#about {
+  padding: 5rem 1.5rem;
+  background: var(--porcelain-white);
+  text-align: center;
+  font-size: 1.1rem;
+  color: var(--clay-red);
+}
+
+/* Visit */
+#visit {
+  padding: 5rem 1.5rem;
+  background: #fff3da;
+  text-align: center;
+}
+
+#visit iframe {
+  width: 100%;
+  max-width: 600px;
+  height: 300px;
+  border: none;
+  margin-top: 1.5rem;
+  border-radius: 1rem;
+}
+
+/* Footer */
+footer {
+  background: var(--maiz-yellow);
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  color: var(--cafe-brown);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  nav a {
+    display: block;
+    margin: 0.5rem 0;
+  }
+
+  .menu-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-img {
+    border-radius: 0;
+  }
+
+  .gallery-marquee {
+    animation-duration: 60s;
+  }
+}
+
+/* Section scroll fix */
+section,
+#gallery {
+  scroll-margin-top: 100px;
+}
+section, #menu, #about, #visit, #hero {
+  scroll-margin-top: 300px;
+}
